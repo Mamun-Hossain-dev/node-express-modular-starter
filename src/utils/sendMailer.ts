@@ -22,11 +22,7 @@ const sendMailer = async (email: string, subject?: string, html?: string) => {
       html,
     })
   } catch (err) {
-    throw new AppError(
-      500,
-      'Failed to send email!',
-      err instanceof Error ? err.message : ''
-    )
+    throw new AppError(500, 'Failed to send email!', err instanceof Error ? err.message : '')
   }
 }
 

@@ -1,7 +1,7 @@
-import { model, Schema } from 'mongoose'
+import { model, Model, Schema } from 'mongoose'
 import bcrypt from 'bcryptjs'
 import config from '../../config'
-import { IUser } from './user.interface'
+import { IUser, IUserModel } from './user.interface'
 
 const userSchema = new Schema<IUser>(
   {
@@ -57,22 +57,17 @@ const userSchema = new Schema<IUser>(
 
 userSchema.pre('save', async function () {
   if (this.isModified('password')) {
-    this.password = await bcrypt.hash(
-      this.password,
-      Number(config.bcryptSaltRounds)
-    )
+    this.password = await bcrypt.hash(this.password, Number(config.bcryptSaltRounds))
   }
 })
 
-userSchema.methods.isPasswordMatched = async function (
-  givenPassword: string
-): Promise<boolean> {
+userSchema.methods.isPasswordMatched = async function (givenPassword: string): Promise<boolean> {
   return await bcrypt.compare(givenPassword, this.password)
 }
 
 // Static method to find user by email
 userSchema.statics.findByEmail = async function (email: string) {
-  return await this.findOne({ email })
+  return await this.findOne({ email }).select('+password')
 }
 
-export const User = model<IUser>('User', userSchema)
+export const User = model<IUser, Model<IUser> & IUserModel>('User', userSchema)

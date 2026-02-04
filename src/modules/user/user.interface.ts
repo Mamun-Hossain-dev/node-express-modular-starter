@@ -1,4 +1,4 @@
-import { Types } from 'mongoose'
+import { HydratedDocument, Types } from 'mongoose'
 import z from 'zod'
 import { createUserZodSchema, getAllUsersZodSchema } from './user.validation'
 
@@ -21,6 +21,11 @@ export interface IUser {
   subscriptionExpiry?: Date | null
   // instance methods
   isPasswordMatched(givenPassword: string): Promise<boolean>
+}
+
+// Static methods interface
+export interface IUserModel {
+  findByEmail(email: string): Promise<HydratedDocument<IUser> | null>
 }
 
 // Additional types for create user inputs

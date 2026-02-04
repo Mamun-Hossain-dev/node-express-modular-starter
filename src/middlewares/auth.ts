@@ -21,16 +21,10 @@ const auth = (...requiredRoles: string[]) => {
     }
 
     try {
-      const decoded = jwt.verify(
-        token,
-        config.jwt.accessSecret as string
-      ) as JwtPayload
+      const decoded = jwt.verify(token, config.jwt.accessSecret as string) as JwtPayload
 
       if (requiredRoles.length && !requiredRoles.includes(decoded.role)) {
-        throw new AppError(
-          403,
-          'You are not authorized to perform this action!'
-        )
+        throw new AppError(403, 'You are not authorized to perform this action!')
       }
 
       req.user = decoded

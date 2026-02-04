@@ -1,12 +1,7 @@
 import mongoose from 'mongoose'
-import {
-  TErrorSources,
-  TGenericErrorResponse,
-} from '../interface/error.interface'
+import { TErrorSources, TGenericErrorResponse } from '../interface/error.interface'
 
-const handleCastError = (
-  error: mongoose.Error.CastError
-): TGenericErrorResponse => {
+const handleCastError = (error: mongoose.Error.CastError): TGenericErrorResponse => {
   const errorSources: TErrorSources = [
     {
       path: error.path,

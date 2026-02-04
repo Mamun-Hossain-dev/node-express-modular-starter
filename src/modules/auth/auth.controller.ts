@@ -112,11 +112,7 @@ const logoutUser = catchAsync(async (req, res) => {
 const changePassword = catchAsync(async (req, res) => {
   const { oldPassword, newPassword } = req.body
 
-  const result = await authService.changePassword(
-    req.user?.id as string,
-    oldPassword,
-    newPassword
-  )
+  const result = await authService.changePassword(req.user?.id as string, oldPassword, newPassword)
 
   sendResponse(res, {
     statusCode: 200,

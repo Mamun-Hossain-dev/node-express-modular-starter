@@ -26,20 +26,9 @@ const getUserById = catchAsync(async (req: Request, res: Response) => {
 })
 
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
-  const filterOptions = pick(req.query, [
-    'searchTerm',
-    'firstName',
-    'lastName',
-    'email',
-    'role',
-  ])
+  const filterOptions = pick(req.query, ['searchTerm', 'firstName', 'lastName', 'email', 'role'])
 
-  const paginationOptions = pick(req.query, [
-    'page',
-    'limit',
-    'sortBy',
-    'sortOrder',
-  ])
+  const paginationOptions = pick(req.query, ['page', 'limit', 'sortBy', 'sortOrder'])
 
   const result = await userService.getAllUsers(filterOptions, paginationOptions)
 
@@ -57,11 +46,7 @@ const updateUserById = catchAsync(async (req: Request, res: Response) => {
   const imageFile = req.file
   const updateData = req.body.data ? JSON.parse(req.body.data) : req.body
 
-  const result = await userService.updateUserById(
-    id,
-    updateData,
-    imageFile as Express.Multer.File
-  )
+  const result = await userService.updateUserById(id, updateData, imageFile as Express.Multer.File)
 
   sendResponse(res, {
     statusCode: 200,

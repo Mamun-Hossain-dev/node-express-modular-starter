@@ -1,11 +1,7 @@
 import AppError from '../../errors/AppError'
 import { fileUploader } from '../../utils/fileUpload'
 import pagination from '../../utils/pagination'
-import {
-  CreateUserInput,
-  UserFilterOptions,
-  UserPaginationOptions,
-} from './user.interface'
+import { CreateUserInput, UserFilterOptions, UserPaginationOptions } from './user.interface'
 import { User } from './user.model'
 
 const createUser = async (payload: Partial<CreateUserInput>) => {
@@ -36,7 +32,7 @@ const getAllUsers = async (
 
   if (searchTerm) {
     andCondition.push({
-      $or: searchFields.map((field) => ({
+      $or: searchFields.map(field => ({
         [field]: { $regex: searchTerm, $options: 'i' },
       })),
     })
@@ -86,9 +82,7 @@ const updateUserById = async (
   updateData: Partial<CreateUserInput>,
   file?: Express.Multer.File
 ) => {
-  const existingUser = await User.findById(id).select(
-    'profileImage profileImagePublicId'
-  )
+  const existingUser = await User.findById(id).select('profileImage profileImagePublicId')
   if (!existingUser) {
     throw new AppError(404, 'User not found')
   }

@@ -25,9 +25,7 @@ const upload = multer({
     const ext = path.extname(file.originalname).toLowerCase()
 
     if (!allowedTypes.test(ext)) {
-      return cb(
-        new AppError(400, 'Only images, videos, or CSV files are allowed')
-      )
+      return cb(new AppError(400, 'Only images, videos, or CSV files are allowed'))
     }
 
     cb(null, true)

@@ -1,6 +1,7 @@
 {
   "name": "node-express-modular-starter",
   "version": "1.0.0",
+  "type": "module",
   "description": "A production-ready, modular, and reusable Node.js Express starter package.",
   "main": "dist/server.js",
   "scripts": {

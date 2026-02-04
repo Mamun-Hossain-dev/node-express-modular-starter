@@ -22,7 +22,7 @@ const main = async () => {
 
 main()
 
-process.on('unhandledRejection', (err) => {
+process.on('unhandledRejection', err => {
   logger.error(`Unhandled Rejection is detected, shutting down ...`, err)
   if (server) {
     server.close(() => {
@@ -33,7 +33,7 @@ process.on('unhandledRejection', (err) => {
   }
 })
 
-process.on('uncaughtException', (err) => {
+process.on('uncaughtException', err => {
   logger.error(`Uncaught Exception is detected, shutting down ...`, err)
   process.exit(1)
 })

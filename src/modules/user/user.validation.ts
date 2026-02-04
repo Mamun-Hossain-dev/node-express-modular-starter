@@ -34,12 +34,7 @@ export const updateUserZodSchema = z.object({
 
 export const getUserParamZodSchema = z.object({
   params: z.object({
-    id: z
-      .string()
-      .refine(
-        (val) => Types.ObjectId.isValid(val),
-        'must be a valid MongoDB ObjectId'
-      ),
+    id: z.string().refine(val => Types.ObjectId.isValid(val), 'must be a valid MongoDB ObjectId'),
   }),
 })
 
@@ -57,9 +52,7 @@ export const getAllUsersZodSchema = z.object({
     limit: z.coerce.number().positive().max(100).optional(),
 
     // sorting
-    sortBy: z
-      .enum(['firstName', 'lastName', 'email', 'createdAt', 'updatedAt'])
-      .optional(),
+    sortBy: z.enum(['firstName', 'lastName', 'email', 'createdAt', 'updatedAt']).optional(),
     sortOrder: z.enum(['asc', 'desc']).optional(),
   }),
 })

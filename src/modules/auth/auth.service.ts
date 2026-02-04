@@ -9,7 +9,7 @@ import { User } from '../user/user.model'
 import { LoginPayloadInput, RegisterPayloadInput } from './auth.interface'
 
 const registerUser = async (payload: RegisterPayloadInput) => {
-  const existingUser = await User.findOne({ email: payload.email })
+  const existingUser = await User.findByEmail(payload.email)
 
   if (existingUser) {
     throw new AppError(400, 'User with this email already exists')
@@ -26,7 +26,7 @@ const registerUser = async (payload: RegisterPayloadInput) => {
 }
 
 const loginUser = async (payload: LoginPayloadInput) => {
-  const user = await User.findOne({ email: payload.email }).select('+password')
+  const user = await User.findByEmail(payload.email)
   if (!user) {
     throw new AppError(401, 'Invalid email or password')
   }
@@ -102,7 +102,7 @@ const refreshToken = async (token: string) => {
 }
 
 const forgotPassword = async (email: string) => {
-  const user = await User.findOne({ email })
+  const user = await User.findByEmail(email)
   if (!user) {
     throw new AppError(404, 'User not found!')
   }
@@ -121,7 +121,7 @@ const forgotPassword = async (email: string) => {
 }
 
 const verifyEmail = async (email: string, otp: string) => {
-  const user = await User.findOne({ email })
+  const user = await User.findByEmail(email)
 
   if (!user) {
     throw new AppError(404, 'User not found!')
@@ -149,7 +149,7 @@ const verifyEmail = async (email: string, otp: string) => {
 }
 
 const resetPassword = async (email: string, newPassword: string) => {
-  const user = await User.findOne({ email })
+  const user = await User.findByEmail(email)
   if (!user) throw new AppError(404, 'User not found')
 
   // if (!user.verified) throw new AppError(404, 'User are not verified')
@@ -181,11 +181,7 @@ const resetPassword = async (email: string, newPassword: string) => {
   }
 }
 
-const changePassword = async (
-  userId: string,
-  oldPassword: string,
-  newPassword: string
-) => {
+const changePassword = async (userId: string, oldPassword: string, newPassword: string) => {
   const user = await User.findById(userId).select('+password')
 
   if (!user) throw new AppError(404, 'user not found')

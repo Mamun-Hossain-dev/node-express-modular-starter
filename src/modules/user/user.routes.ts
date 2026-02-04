@@ -10,23 +10,11 @@ import {
 
 const router = express.Router()
 
-router.post(
-  '/',
-  validateRequest(createUserZodSchema),
-  userController.createUser
-)
+router.post('/', validateRequest(createUserZodSchema), userController.createUser)
 
-router.get(
-  '/:id',
-  validateRequest(getUserParamZodSchema),
-  userController.getUserById
-)
+router.get('/:id', validateRequest(getUserParamZodSchema), userController.getUserById)
 
-router.get(
-  '/',
-  validateRequest(getAllUsersZodSchema),
-  userController.getAllUsers
-)
+router.get('/', validateRequest(getAllUsersZodSchema), userController.getAllUsers)
 
 router.patch(
   '/:id',
@@ -35,10 +23,6 @@ router.patch(
   userController.updateUserById
 )
 
-router.delete(
-  '/:id',
-  validateRequest(getUserParamZodSchema),
-  userController.deleteUserById
-)
+router.delete('/:id', validateRequest(getUserParamZodSchema), userController.deleteUserById)
 
 export const userRoutes = router

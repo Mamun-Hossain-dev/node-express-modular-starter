@@ -14,27 +14,15 @@ import {
 
 const router = express.Router()
 
-router.post(
-  '/register',
-  validateRequest(RegisterUserZodSchema),
-  authController.registerUser
-)
-router.post(
-  '/login',
-  validateRequest(LoginUserZodSchema),
-  authController.loginUser
-)
+router.post('/register', validateRequest(RegisterUserZodSchema), authController.registerUser)
+router.post('/login', validateRequest(LoginUserZodSchema), authController.loginUser)
 router.post('/refresh-token', authController.refreshToken)
 router.post(
   '/forgot-password',
   validateRequest(ForgotPasswordZodSchema),
   authController.forgotPassword
 )
-router.post(
-  '/verify-email',
-  validateRequest(VerifyEmailZodSchema),
-  authController.verifyEmail
-)
+router.post('/verify-email', validateRequest(VerifyEmailZodSchema), authController.verifyEmail)
 router.post(
   '/reset-password',
   validateRequest(ResetPasswordZodSchema),

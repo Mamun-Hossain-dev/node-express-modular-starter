@@ -5,9 +5,7 @@ import { z } from 'zod'
 dotenv.config({ path: path.join(process.cwd(), '.env') })
 
 const envSchema = z.object({
-  NODE_ENV: z
-    .enum(['development', 'production', 'test'])
-    .default('development'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().default(5000),
   MONGO_URI: z.string().min(1, 'Mongo URI is required'),
   CLIENT_URL: z.string().default('http://localhost:3000'),
@@ -32,10 +30,7 @@ const envSchema = z.object({
 const parseEnv = envSchema.safeParse(process.env)
 
 if (!parseEnv.success) {
-  console.error(
-    'Invalid environment variables:',
-    JSON.stringify(parseEnv.error.format(), null, 4)
-  )
+  console.error('Invalid environment variables:', JSON.stringify(parseEnv.error.format(), null, 4))
   process.exit(1)
 }
 
