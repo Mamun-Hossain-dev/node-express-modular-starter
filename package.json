@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "A production-ready, modular, and reusable Node.js Express starter package.",
   "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
+    "prepublishOnly": "npm run build",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "keywords": [
     "node",
     "express",
