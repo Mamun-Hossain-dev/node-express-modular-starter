@@ -1,18 +1,7 @@
-# Create Node Express Modular Starter
+# Node Express Modular Starter
 
-A CLI tool to generate a production-ready, modular, and reusable Node.js Express starter project for building scalable backend and SaaS applications.
-
+A **production-ready, modular, and reusable Node.js Express starter** for building scalable backend and SaaS applications.  
 Built with **TypeScript**, **Clean Architecture**, and **industry best practices**.
-
----
-
-## 🚀 Quick Start
-
-Generate a new project in seconds using `npx`:
-
-```bash
-npx create-node-express-modular my-app
-```
 
 ---
 
@@ -52,7 +41,7 @@ npx create-node-express-modular my-app
 
 ## 📂 Project Structure
 
-```txt
+````txt
 src/
 ├── config/             # Environment configuration (Zod validated)
 ├── errors/             # Custom error classes & handlers
@@ -65,33 +54,38 @@ src/
 ├── utils/              # Shared utilities (JWT, Logger, Mail, etc.)
 ├── app.ts              # Express app setup
 └── server.ts           # Entry point
-```
 
----
 
-## 🛠️ Getting Started (Generated Project)
+## 🛠️ Installation
 
-After running the `npx` command, follow these steps inside your new project folder:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mamun-Hossain-dev/node-express-modular-starter
+   cd node-express-modular-starter
+````
 
-1. **Install dependencies:**
+2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
-2. **Set up Environment Variables:**
+3. **Set up Environment Variables:**
    Copy `.env.example` to `.env` and fill in the required values.
+
    ```bash
    cp .env.example .env
    ```
-   > [!NOTE]
-   > Make sure to configure `MONGO_URI`, `ACCESS_TOKEN_SECRET`, and `REFRESH_TOKEN_SECRET`.
 
-3. **Run the server:**
+   **Required Variables:**
+   - `MONGO_URI`: Your MongoDB connection string.
+   - `ACCESS_TOKEN_SECRET` / `REFRESH_TOKEN_SECRET`: Secrets for JWT.
+   - `CLOUDINARY_*`: Cloudinary credentials for file uploads.
+
+4. **Run the server:**
    ```bash
    npm run dev
    ```
-
----
 
 ## 📜 Scripts
 
@@ -102,18 +96,10 @@ After running the `npx` command, follow these steps inside your new project fold
 - `npm run lint:fix`: Fix linting errors.
 - `npm run format`: Format code with Prettier.
 
----
-
 ## 🤝 Contributing
 
-Contributions are welcome! If you want to contribute to the CLI tool itself:
-
-1. Clone the repository.
-2. Install dependencies: `npm install`.
-3. Use `npm link` to test the CLI locally.
-4. Submit a pull request.
+Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## 📄 License
 
 This project is licensed under the ISC License.
-
