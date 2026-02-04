@@ -1,6 +1,7 @@
 {
   "name": "node-express-modular-starter",
   "version": "1.0.0",
+  "type": "module",
   "description": "A production-ready, modular, and reusable Node.js Express starter package.",
   "main": "dist/server.js",
   "types": "dist/server.d.ts",
@@ -27,7 +28,7 @@
     "clean-architecture",
     "modular"
   ],
-  "author": "",
+  "author": "Mamun Hossain",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -47,6 +48,7 @@
     "zod": "^4.3.5"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
