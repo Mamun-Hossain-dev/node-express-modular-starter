@@ -1,6 +1,6 @@
 {
   "name": "create-node-express-modular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A production-ready, modular, and reusable Node.js Express starter package.",
   "main": "dist/server.js",
