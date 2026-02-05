@@ -35,12 +35,7 @@ export async function createApp(args: string[]) {
             await fs.move(gitignorePath, targetGitignorePath);
         }
 
-        // Rename _env to .env
-        const envPath = path.join(targetDir, '_env');
-        const targetEnvPath = path.join(targetDir, '.env');
-        if (fs.existsSync(envPath)) {
-            await fs.move(envPath, targetEnvPath);
-        }
+
 
         // Update package.json name
         const pkgPath = path.join(targetDir, 'package.json');
