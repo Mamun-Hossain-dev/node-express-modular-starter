@@ -1,7 +1,6 @@
 {
   "name": "my-node-app",
   "version": "1.0.0",
-  "type": "module",
   "description": "A production-ready Node.js Express project.",
   "main": "dist/server.js",
   "scripts": {
